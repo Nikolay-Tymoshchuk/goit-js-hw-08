@@ -1,12 +1,12 @@
-{/* <script src="https://player.vimeo.com/api/player.js"></script> */}
 
-    const iframe = document.querySelector('iframe');
-    const player = new Vimeo.Player(iframe);
 
-    player.on('play', function() {
-        console.log('played the video!');
-    });
+const iframe = document.querySelector('iframe');
+const player = new Vimeo.Player(iframe);
 
-    player.getVideoTitle().then(function(title) {
-        console.log('title:', title);
-    });
+
+player.on('timeupdate', (data) => localStorage.setItem("videoplayer-current-time", data.seconds));
+player.setCurrentTime(localStorage.getItem("videoplayer-current-time"));
+
+
+
+
