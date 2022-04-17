@@ -32,7 +32,8 @@ function formAreaVerification() {
 
 function handleSubmit(event) {
     event.preventDefault();
-    !formEl[0].value || !formEl[1].value ? alert("Все поля дожны быть заполнены",) : console.log(`Сообщение от ${formEl[0].value}`, outputDataObj);
+    if (!formEl[0].value || !formEl[1].value) { alert("Все поля дожны быть заполнены"); return }
+    console.log(`Сообщение от ${formEl[0].value}`, outputDataObj);
     formEl.reset();
     localStorage.removeItem(STORAGE_KEY);
 }
