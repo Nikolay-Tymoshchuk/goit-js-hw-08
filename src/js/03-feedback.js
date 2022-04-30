@@ -1,4 +1,6 @@
 import throttle from "lodash.throttle";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+Notify.init({position: 'center-top'});
 const formEl = document.querySelector('.feedback-form');
 const STORAGE_KEY = 'feedback-form-stat';
 const outputDataObj = { email: '', message: '' };
@@ -32,7 +34,7 @@ function formAreaVerification() {
 
 function handleSubmit(event) {
     event.preventDefault();
-    if (!formEl[0].value || !formEl[1].value) { alert("Все поля дожны быть заполнены"); return }
+    if (!formEl[0].value || !formEl[1].value) {Notify.failure("Все поля должны быть заполнены"); return }
     outputDataObj.email = formEl[0].value;
     outputDataObj.message = formEl[1].value;
     console.log(`Сообщение от ${formEl[0].value}`, outputDataObj);
